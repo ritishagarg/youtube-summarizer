@@ -10,7 +10,6 @@ Original file is located at
 import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 from transformers import BartTokenizer, BartForConditionalGeneration
-
 def summarize_transcript(transcript):
     tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
     model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
@@ -28,7 +27,7 @@ def main():
         if video_url:
             unique_id = video_url.split("=")[-1]
             try:
-                transcript = YouTubeTranscriptApi.get_transcript(unique_id)
+                transcript = YouTubeTranscriptApi.get_transcript(unique_id, proxies={"https": "https://mcjiohud:7xpdqm0wfvh8@206.41.172.74:6634"})
                 subtitle = " ".join([x['text'] for x in transcript])
                 summary = summarize_transcript(subtitle)
                 st.write("**Summary:**")
