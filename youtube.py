@@ -27,7 +27,7 @@ def main():
         if video_url:
             unique_id = video_url.split("=")[-1]
             try:
-                transcript = YouTubeTranscriptApi.get_transcript(unique_id, proxies={"http": "http://mcjiohud:7xpdqm0wfvh8@64.64.118.149:6732"})
+                transcript = YouTubeTranscriptApi.get_transcript(unique_id, proxies={"http": "http://mcjiohud:7xpdqm0wfvh8@166.88.58.10:5735"})
                 subtitle = " ".join([x['text'] for x in transcript])
                 summary = summarize_transcript(subtitle)
                 st.write("**Summary:**")
